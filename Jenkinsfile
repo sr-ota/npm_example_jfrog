@@ -4,7 +4,7 @@ node {
     def buildInfo
     
     stage ('Artifactory configuration') {
-        rtNpm.resolver repo: 'npm-virtual', server: server
+        rtNpm.resolver repo: 'default-npm-virtual', server: server
         buildInfo = Artifactory.newBuildInfo()
     }
     
