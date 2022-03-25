@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('JFrog Config') {
           steps {
-            sh 'jf c add --url $ART_URL --password $ARTIFACTORY_ACCESS_TOKEN'
+            sh 'jf c add --url $ART_URL --user "svrath@web.de" --password $ARTIFACTORY_ACCESS_TOKEN'
           }
         }
         stage('Build') { 
