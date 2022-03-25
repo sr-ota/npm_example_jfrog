@@ -14,7 +14,8 @@ node {
     
     stage ('Package and create distribution archives') {
         rtNpm.tool = 'latest'
-	buildInfo = rtNpm.install path: '.'
+        sh 'ls'
+	      buildInfo = rtNpm.install path: '.'
     }
 
     stage ('Publish build info') {
