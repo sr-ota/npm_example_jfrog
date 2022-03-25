@@ -16,14 +16,14 @@ pipeline {
         BUILD_ID = 3
     }
     stages {
-        stage('JFrog Config') {
+        /*stage('JFrog Config') {
           steps {
-            sh 'jf c add --url $ART_URL --user "svrath@web.de" --password $ARTIFACTORY_ACCESS_TOKEN'
+            // sh 'jf c add --url $ART_URL --password $ARTIFACTORY_ACCESS_TOKEN'
           }
-        }
+        }*/
         stage('Build') { 
             steps {
-                sh 'jf npm-config' //  --repo-resolve "default-npm-virtual"'
+                sh 'jf npm-config --server-id-resolve "jfrog-eval"' //  --repo-resolve "default-npm-virtual"'
                 sh 'jf rt build-add-git $BUILD_NAME $BUILD_ID'
                 sh 'jf npm install --build-name $BUILD_NAME --build-number $BUILD_ID' 
                 sh 'jf rt build-add-dependencies $BUILD_NAME $BUILD_ID "node_modules/**/*"'
