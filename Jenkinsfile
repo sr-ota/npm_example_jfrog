@@ -18,7 +18,6 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'jf mvn-config  --scan true' 
                 sh 'jf rt build-add-git $BUILD_NAME $BUILD_ID'
                 sh 'jf npm install --build-name $BUILD_NAME --build-number $BUILD_ID' 
                 sh 'jf rt build-add-dependencies $BUILD_NAME $BUILD_ID "node_modules/**/*"'
