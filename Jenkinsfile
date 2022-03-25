@@ -16,6 +16,11 @@ pipeline {
         BUILD_ID = 3
     }
     stages {
+        stage('JFrog Config') {
+          steps {
+            sh 'jf c add --url $ART_URL --password $ARTIFACTORY_ACCESS_TOKEN'
+          }
+        }
         stage('Build') { 
             steps {
                 sh 'jf npm-config' //  --repo-resolve "default-npm-virtual"'
