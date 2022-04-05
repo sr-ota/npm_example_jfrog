@@ -6,7 +6,6 @@ node {
     stage ('Artifactory configuration') {
         rtNpm.resolver repo: 'default-npm-virtual', server: server
         buildInfo = Artifactory.newBuildInfo()
-        buildInfo.project = "x01" // jfrog project key
     }
     
     stage ('Git Clone') {
@@ -19,6 +18,7 @@ node {
     }
 
     stage ('Publish build info') {
+        buildInfo.project = "x01" // jfrog project key
         server.publishBuildInfo buildInfo
     }
     
